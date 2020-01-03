@@ -55,16 +55,17 @@ like so:
 
 results_smote = base_pipeline(data=new_df, sampling_technique=Smote, clean=False, verbose=False, plot=False)
 
-    Settings:
-   (1) data => the dataset that will be used (can be another other than the fraud dataset but the Class of the Target/Dependent class must be named 'Class'
+Setting for Basepipeline
+(1) data => the dataset that will be used (can be another other than the fraud dataset but the Class of the Target/Dependent class must be named 'Class'
    and the categories must be 0 (for negative) and 1 (for positive)
-   (2) sampling_technique => The sampling technique that will be tested 
-   (3) clean: Boolean that decides whether to run outlier removal (isolation forest)
+   
+   
+(2) sampling_technique => The sampling technique that will be tested 
+(3) clean: Boolean that decides whether to run outlier removal (isolation forest)
+ If clean=True -> Will run Isolation Forest to remove any outliers that are detected (up max 1000, this setting can be adjusted in the isolation forest function)
  
- If clean=True -> Will run Isolation Forest to remove any outliers that are detected (up max 1000, 
-                this setting can be adjusted in the isolation forest function)
  If clean=False -> will not run any outlier removal
 
-  (4) Verbose: Boolean that decides whether or not to give information for each learning step
-  (5) Plot: Boolean that decides whether or not the pipeline should produce ROC_AUC curves for every classifier that is tested
+(4) Verbose: Boolean that decides whether or not to give information for each learning step
+(5) Plot: Boolean that decides whether or not the pipeline should produce ROC_AUC curves for every classifier that is tested
 
