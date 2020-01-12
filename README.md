@@ -2,12 +2,22 @@
 Fraud Machine Learning Pipelining for experimenting with sampling techniques
 (SMOTE + SMOTE extensions available on Imbalanced Learn)
 
-A zipped version of the creditcard dataset used in this project is included in the repository.
+
+A zipped version of the creditcard dataset used in this project is included in the repository. Base_pipeline.py file
+will open the zipped creditcard dataset, unzip it,  read it, scale the two features (Time &  Amount). The scaled features are then inserted into a new dataframe (new_df) that uses the scaled features instead of their original counterparts. The  data is then used by the pipeline to learn the classifiers. The results of each classifier is then printed. Lastly, the unzipped dataset file is deleted.
+
+Settings of example using smote: Clean=False, Plot=False, Verbose = False.
+
+sm = SMOTE(random_state=rand_state)
+&
+results=base_pipeline(data=new_df, sampling_technique=sm, clean=False, verbose=True, plot=False)
+
+Results are saved as an object named 'results' which can be written to a csv file with pandas.
 
 
             :Requirements:
             
-            imbalanced-learn==0.6.1
+            imbalanced-learn==0.4.3
             imblearn==0.0
            
             matplotlib==3.1.2
@@ -17,7 +27,7 @@ A zipped version of the creditcard dataset used in this project is included in t
 
      
           
-            scikit-learn==0.22
+            scikit-learn==0.22.1
             scikit-posthocs==0.6.2
             
             scipy==1.4.1
@@ -28,18 +38,18 @@ A zipped version of the creditcard dataset used in this project is included in t
 To reproduce results from thesis set rand_state = 42
 and evaluate SMOTE, SVM-SMOTE, SMOTETomek, BorderlineSMOTE, RandomOversampling, SMOTEEN and No sampling (separate pipeline)
 
-List of classifiers that are tested:
+            List of classifiers that are tested:
 
-1) DecisionTreeClassifier(random_state=rand_state)
+            1) DecisionTreeClassifier(random_state=rand_state)
 
-2) RUSBoostClassifier(random_state=rand_state)
-3) LogisticRegression(random_state=rand_state),
-4) BalancedBaggingClassifier(random_state=rand_state)
-5) RandomForestClassifier(random_state=rand_state)
-6) EasyEnsembleClassifier(base_estimator=RandomForestClassifier(random_state=rand_state),random_state=rand_state),
-(EasyEnsembleClassifier has base estimator of RFC -> only non-default setting)
+            2) RUSBoostClassifier(random_state=rand_state)
+            3) LogisticRegression(random_state=rand_state),
+            4) BalancedBaggingClassifier(random_state=rand_state)
+            5) RandomForestClassifier(random_state=rand_state)
+            6) EasyEnsembleClassifier(base_estimator=RandomForestClassifier(random_state=rand_state),random_state=rand_state),
+            (EasyEnsembleClassifier has base estimator of RFC -> only non-default setting)
 
-7) BalancedRandomForestClassifier(random_state=rand_state)
+            7) BalancedRandomForestClassifier(random_state=rand_state)
 
 
 #Example of how to run the pipeline:
@@ -69,3 +79,5 @@ Setting for Basepipeline
 (4) Verbose: Boolean that decides whether or not to give information for each learning step as well a confusion matrix and a classification report (from imbalanced-learn library) that gives some of the metrics used with imbalanced datasets.
 (5) Plot: Boolean that decides whether or not the pipeline should produce one graph with the ROC_AUC curves for each classifier that is tested (a key with the associated ROC values is also given in the graph)
 
+(6) Results:
+Copy of results obtained for each set have been inlcuded in the results folder along with a combined csv file with all results (ranked) and all results (unranked)
