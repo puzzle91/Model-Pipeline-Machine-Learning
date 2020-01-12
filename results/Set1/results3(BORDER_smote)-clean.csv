@@ -1,0 +1,8 @@
+,classifier,strategy,samp_technique,f1,roc_auc,g_mean,accuracy,precision,recall
+DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.3226,0.6784,0.5975,0.9992,0.2941,0.3571
+RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.4138,0.7141,0.6545,0.9994,0.4,0.4286
+LogisiticRegression,LogisticRegression, LogisticRegression+BorderlineSMOTE ,BorderlineSMOTE,0.0463,0.9198,0.9176,0.9823,0.0238,0.8571
+BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.5,0.7142,0.6546,0.9996,0.6,0.4286
+RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.6087,0.75,0.7071,0.9997,0.7778,0.5
+EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.6957,0.7857,0.7559,0.9997,0.8889,0.5714
+BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.6957,0.7857,0.7559,0.9997,0.8889,0.5714

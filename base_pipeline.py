@@ -1,4 +1,4 @@
-
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -86,7 +86,7 @@ from imblearn.metrics import (sensitivity_score, specificity_score, geometric_me
 from sklearn.metrics import average_precision_score
 from sklearn.metrics import precision_recall_curve
 
-
+import zipfile
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -94,15 +94,18 @@ print(__doc__)
 
 
 
+with zipfile.ZipFile('creditcard copy.csv.zip', 'r') as zip_ref:
+    zip_ref.extractall()
 
 
 
 
 
 
+df = pd.read_csv('creditcard copy.csv')
 
-df = pd.read_csv('creditcard.csv')
-
+#Using a uniform random state number for reproducability.
+rand_state = 42
 
 
 print("----"*10)
@@ -124,7 +127,6 @@ print("Max:", max(df['Amount']))
 print("done")
 
 
-rand_state = 42
 print(df['Amount'].cummin())
 
 
@@ -136,12 +138,9 @@ df = df.sample(frac=1, random_state=rand_state)
 
 
 
-X = df.drop('Class', axis=1)
-y = df['Class']
 
 
 #SCALING DATA
-std_scaler = StandardScaler()
 rob_scaler = RobustScaler()
 df['scaled_amount'] = rob_scaler.fit_transform(df['Amount'].values.reshape(-1,1))
 df['scaled_time'] = rob_scaler.fit_transform(df['Time'].values.reshape(-1,1))
@@ -163,23 +162,26 @@ df.insert(1, 'scaled_time', scaled_time)
 # Due to the pervious insert of new colums scaled amount and scaled time 
 # The dataset will be shuffled before creating training and test sets 
 # 
-df = df.sample(frac=1, random_state=rand_state)
 
 # amount of fraud classes 492 rows.
 fraud_df = df.loc[df['Class'] == 1] #Taking all fraud cases
-non_fraud_df = df.loc[df['Class'] == 0] #Taking all  non_fraud cases
+non_fraud_df = df.loc[df['Class'] == 0][:492]#Taking all  non_fraud cases
 
-normal_distributed_df = pd.concat([fraud_df, non_fraud_df])
-
+scaled_df = pd.concat([fraud_df, non_fraud_df])
+print(df)
+print("----"*50)
+print(fraud_df)
+print(non_fraud_df)
 # Shuffling again due to the concatenation above 
 
-new_df = normal_distributed_df.sample(frac=1, random_state=rand_state)
+new_df = scaled_df.sample(frac=1, random_state=rand_state)
 
 print("NEW DF:", new_df.head(5))
 
 print('Distribution of the Classes in the subsample dataset')
 print(new_df['Class'].value_counts()) 
 print(len(new_df))
+
 
 
 
@@ -227,20 +229,24 @@ def plot_scatter(X, y, title):
     plt.title(title)
 
 reject_sampler = FunctionSampler(func=outlier_rejection)
-X_vals = X.values
-y_vals =y.values
+# X_vals = X.values
+# y_vals =y.values
 X_inliers, y_inliers = reject_sampler.fit_resample(X_vals, y_vals)
-plot_scatter(X_inliers, y_inliers, 'Training data without outliers')
+# plot_scatter(X_inliers, y_inliers, 'Training data without outliers')
 
 print("Total outliers removed: {:}".format(len(X_vals) - len(X_inliers)))
-print("New lenght of X: {} ; new length of y {}".format(len(X_inliers),  len(y_inliers)))
+# print("New lenght of X: {} ; new length of y {}".format(len(X_inliers),  len(y_inliers)))
+
+
+
+
+ 
 
 
 
 
 
-
-def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, plot=False):
+def base_pipeline(data=[], sampling_technique=[], clean=False,  verbose=False, plot=False):
           
           results_table=[]
           results=[]
@@ -262,6 +268,7 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
               X=X.values  
               y=y.values
               pass
+         
    
 
           skfs = StratifiedKFold(n_splits=10, random_state=rand_state, shuffle=False)
@@ -409,7 +416,7 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
 
 #2. Create a results dataframe from the base_pipeline function:
 # like so:
-#  results6=base_pipeline(data=new_df, sampling_technique=Smote, clean=False, verbose=False, plot=False)
+#  results=base_pipeline(data=new_df, sampling_technique=Smote, clean=False, verbose=False, plot=False)
 
 # Settings:
 #   (1) data => the datase that will be used (Target/Dependent class must be named 'Class')
@@ -425,3 +432,12 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
 #   (5) Plot: Boolean that decides whether or not the pipeline should produce ROC_AUC cuves 
 #   for every classifier that is tested
 
+sm = SMOTE(random_state=rand_state)
+
+
+results=base_pipeline(data=new_df, sampling_technique=sm, clean=False, verbose=True, plot=False)
+
+print("Transposed:",results.transpose().to_string())
+
+
+os.remove("creditcard copy.csv")

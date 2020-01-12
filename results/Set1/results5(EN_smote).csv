@@ -1,0 +1,8 @@
+,classifier,strategy,samp_technique,f1,roc_auc,g_mean,accuracy,precision,recall
+DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+SMOTEENN ,SMOTEENN,0.4971,0.9374,0.9354,0.9969,0.3468,0.8776
+RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+SMOTEENN ,SMOTEENN,0.5443,0.9376,0.9357,0.9975,0.3945,0.8776
+LogisiticRegression,LogisticRegression, LogisticRegression+SMOTEENN ,SMOTEENN,0.1128,0.9468,0.9464,0.9751,0.0601,0.9184
+BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+SMOTEENN ,SMOTEENN,0.7107,0.9383,0.9363,0.9988,0.5972,0.8776
+RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+SMOTEENN ,SMOTEENN,0.8462,0.9488,0.9474,0.9994,0.8,0.898
+EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+SMOTEENN ,SMOTEENN,0.8224,0.9487,0.9474,0.9993,0.7586,0.898
+BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+SMOTEENN ,SMOTEENN,0.8113,0.9385,0.9365,0.9993,0.7544,0.8776

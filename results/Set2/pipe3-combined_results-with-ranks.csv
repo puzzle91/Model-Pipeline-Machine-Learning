@@ -1,0 +1,50 @@
+,Unnamed: 0,Unnamed: 1,Unnamed: 0.1,classifier,strategy,samp_technique,f1,roc_auc,g_mean,ranked-f1,ranked-gmean,ranked-roc,combined-rank(divided by 3),combined-rank(undivided)
+27,BorderlineSmote,6,BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.7957,0.8774,0.8688,48.0,40.0,41.0,43.0,129.0
+26,BorderlineSmote,5,EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.7957,0.8774,0.8688,48.0,40.0,41.0,43.0,129.0
+46,SMOTE-Tomek,4,RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+SMOTETomek ,SMOTETomek,0.7872,0.8773,0.8688,44.0,40.0,39.0,41.0,123.0
+33,SVM-Smote,5,EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+SVMSMOTE ,SVMSMOTE,0.7872,0.8773,0.8688,44.0,40.0,39.0,41.0,123.0
+11,SMOTE,4,RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+SMOTE ,SMOTE,0.7872,0.8773,0.8688,44.0,40.0,39.0,41.0,123.0
+13,SMOTE,6,BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+SMOTE ,SMOTE,0.7789,0.8773,0.8688,40.0,40.0,39.0,39.666666666666664,119.0
+12,SMOTE,5,EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+SMOTE ,SMOTE,0.7789,0.8773,0.8688,40.0,40.0,39.0,39.666666666666664,119.0
+48,SMOTE-Tomek,6,BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+SMOTETomek ,SMOTETomek,0.7789,0.8773,0.8688,40.0,40.0,39.0,39.666666666666664,119.0
+47,SMOTE-Tomek,5,EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+SMOTETomek ,SMOTETomek,0.7789,0.8773,0.8688,40.0,40.0,39.0,39.666666666666664,119.0
+41,SMOTE-EN,6,BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+SMOTEENN ,SMOTEENN,0.7789,0.8773,0.8688,40.0,40.0,39.0,39.666666666666664,119.0
+25,BorderlineSmote,4,RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.8276,0.8673,0.8571,49.0,29.0,29.0,35.666666666666664,107.0
+6,No Sampling,6,BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+no_sampling ,no_sampling,0.1758,0.8985,0.8947,8.0,49.0,49.0,35.333333333333336,106.0
+32,SVM-Smote,4,RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+SVMSMOTE ,SVMSMOTE,0.7912,0.8672,0.857,46.0,28.0,28.0,34.0,102.0
+19,SimpleOverSampling,5,EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+RandomOverSampler ,RandomOverSampler,0.7912,0.8672,0.857,46.0,28.0,28.0,34.0,102.0
+16,SimpleOverSampling,2,LogisiticRegression,LogisticRegression, LogisticRegression+RandomOverSampler ,RandomOverSampler,0.1643,0.8977,0.894,5.0,48.0,48.0,33.666666666666664,101.0
+30,SVM-Smote,2,LogisiticRegression,LogisticRegression, LogisticRegression+SVMSMOTE ,SVMSMOTE,0.2438,0.8918,0.8867,10.0,44.0,44.0,32.666666666666664,98.0
+9,SMOTE,2,LogisiticRegression,LogisticRegression, LogisticRegression+SMOTE ,SMOTE,0.1572,0.8971,0.8934,4.0,47.0,47.0,32.666666666666664,98.0
+44,SMOTE-Tomek,2,LogisiticRegression,LogisticRegression, LogisticRegression+SMOTETomek ,SMOTETomek,0.1572,0.8971,0.8934,4.0,47.0,47.0,32.666666666666664,98.0
+23,BorderlineSmote,2,LogisiticRegression,LogisticRegression, LogisticRegression+BorderlineSMOTE ,BorderlineSMOTE,0.2261,0.8912,0.8861,9.0,43.0,43.0,31.666666666666668,95.0
+37,SMOTE-EN,2,LogisiticRegression,LogisticRegression, LogisticRegression+SMOTEENN ,SMOTEENN,0.1527,0.8967,0.8931,2.0,45.0,45.0,30.666666666666668,92.0
+3,No Sampling,3,BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+no_sampling ,no_sampling,0.1707,0.8882,0.8834,7.0,42.0,42.0,30.333333333333332,91.0
+20,SimpleOverSampling,6,BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+RandomOverSampler ,RandomOverSampler,0.7742,0.8671,0.857,35.0,28.0,26.0,29.666666666666668,89.0
+4,No Sampling,4,RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+no_sampling ,no_sampling,0.7742,0.8671,0.857,35.0,28.0,26.0,29.666666666666668,89.0
+31,SVM-Smote,3,BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+SVMSMOTE ,SVMSMOTE,0.7659999999999999,0.8671,0.8569,33.0,24.0,26.0,27.666666666666668,83.0
+39,SMOTE-EN,4,RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+SMOTEENN ,SMOTEENN,0.7659999999999999,0.8671,0.8569,33.0,24.0,26.0,27.666666666666668,83.0
+34,SVM-Smote,6,BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+SVMSMOTE ,SVMSMOTE,0.7579,0.8671,0.8569,31.0,24.0,26.0,27.0,81.0
+38,SMOTE-EN,3,BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+SMOTEENN ,SMOTEENN,0.6789,0.8769,0.8684,20.0,30.0,31.0,27.0,81.0
+40,SMOTE-EN,5,EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+SMOTEENN ,SMOTEENN,0.75,0.8671,0.8569,30.0,24.0,26.0,26.666666666666668,80.0
+17,SimpleOverSampling,3,BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+RandomOverSampler ,RandomOverSampler,0.75,0.8671,0.8569,30.0,24.0,26.0,26.666666666666668,80.0
+5,No Sampling,5,EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+no_sampling ,no_sampling,0.131,0.8747,0.8691,1.0,41.0,30.0,24.0,72.0
+14,SimpleOverSampling,0,DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+RandomOverSampler ,RandomOverSampler,0.7273,0.867,0.8568,28.0,19.0,19.0,22.0,66.0
+10,SMOTE,3,BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+SMOTE ,SMOTE,0.7129,0.8669,0.8568,25.0,19.0,18.0,20.666666666666668,62.0
+45,SMOTE-Tomek,3,BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+SMOTETomek ,SMOTETomek,0.7129,0.8669,0.8568,25.0,19.0,18.0,20.666666666666668,62.0
+28,SVM-Smote,0,DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+SVMSMOTE ,SVMSMOTE,0.6923,0.8668,0.8567,23.0,16.0,16.0,18.333333333333332,55.0
+29,SVM-Smote,1,RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+SVMSMOTE ,SVMSMOTE,0.6923,0.8668,0.8567,23.0,16.0,16.0,18.333333333333332,55.0
+18,SimpleOverSampling,4,RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+RandomOverSampler ,RandomOverSampler,0.7816,0.8468,0.8329,41.0,7.0,7.0,18.333333333333332,55.0
+15,SimpleOverSampling,1,RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+RandomOverSampler ,RandomOverSampler,0.7216,0.8568,0.8449,27.0,9.0,9.0,15.0,45.0
+8,SMOTE,1,RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+SMOTE ,SMOTE,0.5496,0.8661,0.8561,16.0,14.0,14.0,14.666666666666666,44.0
+43,SMOTE-Tomek,1,RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+SMOTETomek ,SMOTETomek,0.5496,0.8661,0.8561,16.0,14.0,14.0,14.666666666666666,44.0
+7,SMOTE,0,DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+SMOTE ,SMOTE,0.5455,0.8661,0.8561,14.0,14.0,14.0,14.0,42.0
+42,SMOTE-Tomek,0,DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+SMOTETomek ,SMOTETomek,0.5455,0.8661,0.8561,14.0,14.0,14.0,14.0,42.0
+0,No Sampling,0,DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+no_sampling ,no_sampling,0.68,0.8465,0.8326,21.0,6.0,6.0,11.0,33.0
+2,No Sampling,2,LogisiticRegression,LogisticRegression, LogisticRegression+no_sampling ,no_sampling,0.7209,0.8162,0.7953,26.0,3.0,3.0,10.666666666666666,32.0
+36,SMOTE-EN,1,RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+SMOTEENN ,SMOTEENN,0.4966,0.8658,0.8558,11.0,10.0,10.0,10.333333333333334,31.0
+35,SMOTE-EN,0,DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+SMOTEENN ,SMOTEENN,0.5072,0.8557,0.8439,12.0,8.0,8.0,9.333333333333334,28.0
+22,BorderlineSmote,1,RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.6126,0.8462,0.8324,18.0,5.0,5.0,9.333333333333334,28.0
+24,BorderlineSmote,3,BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.6598,0.8261,0.8078,19.0,4.0,4.0,9.0,27.0
+21,BorderlineSmote,0,DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+BorderlineSMOTE ,BorderlineSMOTE,0.5688,0.8156,0.7948,17.0,2.0,2.0,7.0,21.0
+1,No Sampling,1,RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+no_sampling ,no_sampling,0.1667,0.6004,0.451,6.0,1.0,1.0,2.6666666666666665,8.0

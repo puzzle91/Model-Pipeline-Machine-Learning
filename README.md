@@ -2,8 +2,8 @@
 Fraud Machine Learning Pipelining for experimenting with sampling techniques
 (SMOTE + SMOTE extensions available on Imbalanced Learn)
 
-Link to creditcard fraud Dataset:
-https://datahub.io/machine-learning/creditcard/r/creditcard.csv
+A zipped version of the creditcard dataset used in this project is included in the repository.
+
 
             :Requirements:
             

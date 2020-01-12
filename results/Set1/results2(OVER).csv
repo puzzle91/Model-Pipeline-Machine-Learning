@@ -1,0 +1,8 @@
+,classifier,strategy,samp_technique,f1,roc_auc,g_mean,accuracy,precision,recall
+DecisionTreeClassifier,DecisionTreeClassifier, DecisionTreeClassifier+RandomOverSampler ,RandomOverSampler,0.7921,0.908,0.9033,0.9993,0.7692,0.8163
+RUSBoostClaassifier,RUSBoostClassifier, RUSBoostClassifier+RandomOverSampler ,RandomOverSampler,0.7921,0.908,0.9033,0.9993,0.7692,0.8163
+LogisiticRegression,LogisticRegression, LogisticRegression+RandomOverSampler ,RandomOverSampler,0.1216,0.9478,0.9474,0.9772,0.0651,0.9184
+BalancedBaggingClassifier,BalancedBaggingClassifier, BalancedBaggingClassifier+RandomOverSampler ,RandomOverSampler,0.8367,0.9182,0.9146,0.9994,0.8367,0.8367
+RandomForestClassifier,RandomForestClassifier, RandomForestClassifier+RandomOverSampler ,RandomOverSampler,0.8791,0.9081,0.9035,0.9996,0.9524,0.8163
+EasyEnsembleClassifier,EasyEnsembleClassifier, EasyEnsembleClassifier+RandomOverSampler ,RandomOverSampler,0.8478,0.8979,0.8921,0.9995,0.907,0.7959
+BalancedRandomForestClassifier,BalancedRandomForestClassifier, BalancedRandomForestClassifier+RandomOverSampler ,RandomOverSampler,0.8511,0.9081,0.9034,0.9995,0.8889,0.8163
