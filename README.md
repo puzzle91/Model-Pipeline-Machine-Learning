@@ -66,6 +66,6 @@ Setting for Basepipeline
  
  If clean=False -> will not run any outlier removal
 
-(4) Verbose: Boolean that decides whether or not to give information for each learning step
-(5) Plot: Boolean that decides whether or not the pipeline should produce ROC_AUC curves for every classifier that is tested
+(4) Verbose: Boolean that decides whether or not to give information for each learning step as well a confusion matrix and a classification report (from imbalanced-learn library) that gives some of the metrics used with imbalanced datasets.
+(5) Plot: Boolean that decides whether or not the pipeline should produce one graph with the ROC_AUC curves for each classifier that is tested (a key with the associated ROC values is also given in the graph)
 
