@@ -96,11 +96,6 @@ print(__doc__)
 
 df = pd.read_csv('creditcard copy.csv')
 
-# print(df.head(5))
-# print("missing values:", df.isnull().sum().max())
-# print("----"*10)
-
-# print(df.columns)
 print(df.describe)
 
 print("----"*10)
@@ -129,11 +124,7 @@ print(df['Amount'].cummin())
 
 df = pd.read_csv('creditcard copy.csv')
 
-# print(df.head(5))
-# print("missing values:", df.isnull().sum().max())
-# print("----"*10)
 
-# print(df.columns)
 print(df.describe)
 
 print("----"*10)
@@ -233,7 +224,7 @@ y = new_df['Class']
 X_vals = X.values
 y_vals = y.values
 
-# This is explicitly used for undersampling.
+# This is explicitly used for the cleaning (outlier rejection fuctions) of outliers/noise 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=rand_state)
 
 # Turn the values into an array for feeding the classification algorithms.
@@ -309,13 +300,7 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
               X=X.values  
               y=y.values
               pass
-          # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=rand_state)
-
-          # # Turn the values into an array for feeding the classification algorithms.
-          # X_train = X_train.values
-          # X_test = X_test.values
-          # y_train = y_train.values
-          # y_test = y_test.values
+   
 
           sss = StratifiedKFold(n_splits=10, random_state=rand_state, shuffle=False)
           print("Straitified kfold:", sss)
@@ -351,10 +336,7 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
             X_train, X_test = X[train_index], X[test_index]
             y_train, y_test = y[train_index], y[test_index]
 
-          # X_train=X_train.values
-          # X_test=X_test.values
-          # y_train=y_train.values
-          # y_test=y_test.values
+         
 
           for model in models: 
             print("Using lentgh of X for training: {}; Using Length of Y for training: {}".format(len(X_train), len(y_train)))
