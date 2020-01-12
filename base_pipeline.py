@@ -94,38 +94,16 @@ print(__doc__)
 
 
 
-df = pd.read_csv('creditcard copy.csv')
-
-print(df.describe)
-
-print("----"*10)
-print('No Frauds', round(df['Class'].value_counts()[0]/len(df) * 100,2), '% of the dataset')
-print('Frauds', round(df['Class'].value_counts()[1]/len(df) * 100,2), '% of the dataset')
-print("NotFraud:", df['Class'].value_counts()[0])
-print ("fraud:", df['Class'].value_counts()[1])
-print("----"*10)
-# Good No Null Values!
-print("NULL VALUES", df.isnull().sum().max())
-
-# print("SIZE:", len(df))
-
-print(df['Amount']) 
-
-print("Min (0 - transaction amount):", min(df['Amount']))
-print("Max:", max(df['Amount']))
 
 
-print("done")
 
 
-#help(df)
-
-print(df['Amount'].cummin())
-
-df = pd.read_csv('creditcard copy.csv')
 
 
-print(df.describe)
+
+df = pd.read_csv('creditcard.csv')
+
+
 
 print("----"*10)
 print('No Frauds', round(df['Class'].value_counts()[0]/len(df) * 100,2), '% of the dataset')
@@ -133,10 +111,9 @@ print('Frauds', round(df['Class'].value_counts()[1]/len(df) * 100,2), '% of the 
 print("NotFraud:", df['Class'].value_counts()[0])
 print ("fraud:", df['Class'].value_counts()[1])
 print("----"*10)
-# Good No Null Values!
+#  No Null Values!
 print("NULL VALUES", df.isnull().sum().max())
 
-# print("SIZE:", len(df))
 
 print(df['Amount']) 
 
@@ -156,16 +133,6 @@ original_df = df
 # print(df.head(5))
 
 df = df.sample(frac=1, random_state=rand_state)
-
-
-# print('No Frauds in validation set', round(validation_df['Class'].value_counts()[0]/len(validation_df) * 100,2), '% of the dataset')
-# print('Frauds in validation set', round(validation_df['Class'].value_counts()[1]/len(validation_df) * 100,2), '% of the dataset')
-# print('count non-fraud in validation set:', validation_df['Class'].value_counts()[0])
-# print('count fraud in validation set:', validation_df['Class'].value_counts()[1])
-
-# train_df = df.drop(validation_df.index)
-
-
 
 
 
@@ -215,16 +182,14 @@ print(new_df['Class'].value_counts())
 print(len(new_df))
 
 
-#print(set(new_df['Class']))
 
-# Creating a new Dataframe training dataframe
 X = new_df.drop('Class', axis=1)
 y = new_df['Class']
 
 X_vals = X.values
 y_vals = y.values
 
-# This is explicitly used for the cleaning (outlier rejection fuctions) of outliers/noise 
+# This is explicitly used for the data-cleaning process (outlier rejection using isolation forest) 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=rand_state)
 
 # Turn the values into an array for feeding the classification algorithms.
@@ -265,7 +230,7 @@ reject_sampler = FunctionSampler(func=outlier_rejection)
 X_vals = X.values
 y_vals =y.values
 X_inliers, y_inliers = reject_sampler.fit_resample(X_vals, y_vals)
-#plot_scatter(X_inliers, y_inliers, 'Training data without outliers')
+plot_scatter(X_inliers, y_inliers, 'Training data without outliers')
 
 print("Total outliers removed: {:}".format(len(X_vals) - len(X_inliers)))
 print("New lenght of X: {} ; new length of y {}".format(len(X_inliers),  len(y_inliers)))
@@ -280,10 +245,7 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
           results_table=[]
           results=[]
           rand_state =42
-          # data = data   
-          # if clean:
-          #   data = remove_outliers(data=data, verbose=False)
-          #   pass
+        
           
           if clean:
               #data = data.sample(frac=1, shuffle = False)
@@ -302,8 +264,8 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
               pass
    
 
-          sss = StratifiedKFold(n_splits=10, random_state=rand_state, shuffle=False)
-          print("Straitified kfold:", sss)
+          skfs = StratifiedKFold(n_splits=10, random_state=rand_state, shuffle=False)
+          print("Straitified kfold:", skfs)
 
 
           #List of models to be used
@@ -313,7 +275,6 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
 
         
           results_table = pd.DataFrame(columns=['models', 'fpr','tpr','auc'])
-          #Create training and testing data sets depending on wheather or not they have been generated previously.
           #Instantiate lists to store each of the models results
           accuracy = []
           f1 = []
@@ -327,10 +288,9 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
           start = time.time()
           
           #Run thorugh each of the models to get their performance metrics
-          #fold  = sss.split(X,y)
           sampling_strat = sampling_technique
          
-          for train_index, test_index in sss.split(X,y):
+          for train_index, test_index in skfs.split(X,y):
           
           
             X_train, X_test = X[train_index], X[test_index]
@@ -341,19 +301,17 @@ def base_pipeline(data=[], sampling_technique=[], clean=False, verbose=False, pl
           for model in models: 
             print("Using lentgh of X for training: {}; Using Length of Y for training: {}".format(len(X_train), len(y_train)))
             print("Using lentgh of X for testing: {}; Using Length of Y for test: {}".format(len(X_test), len(y_test)))
-            strat = ""
             
             print("Currently training model - {} using sampling strategy - {}".format(model.__class__.__name__, sampling_strat.__class__.__name__))
             print("--"*20)
 
             clf = model
             sampling_technique = sampling_strat
-            pipe = make_pipeline(sampling_strat, clf) # LOG_REG_MODEL WITH BOTHER
+            pipe = make_pipeline(sampling_strat, clf) 
             pipe.fit(X_train, y_train)
             t2=time.time()
             print("Time training:", start-t2)
             test_preds = pipe.predict(X_test)
-            #yproba = pipe.predict_proba(X_test)[::,1]
 
 
             strategy.append(" %s+%s " %(str(model.__class__.__name__), str(sampling_strat.__class__.__name__)))
